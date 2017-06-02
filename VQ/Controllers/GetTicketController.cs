@@ -40,7 +40,7 @@ namespace VQ.Controllers
                 return RedirectToAction("Index", "Warning", new { id = "1901" });
             }
 
-            return View(db.ServiceTypes.Where(x => x.IsActive == true).ToList());
+            return View(db.ServiceTypes.Where(x => x.IsActive == true).OrderBy(x => x.Department.DeptCode).ThenBy(x => x.Name).ToList());
         }
 
         // GET: GetTicket

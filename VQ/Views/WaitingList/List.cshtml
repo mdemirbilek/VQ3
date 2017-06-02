@@ -1,0 +1,54 @@
+﻿@model IEnumerable<VQ.Ticket>
+
+@{
+    ViewBag.Title = "Waiting List";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    DateTime now = DateTime.Now;
+    string today = now.Year.ToString() + "-" + now.Month.ToString() + "-" + now.Day.ToString();
+}
+
+
+<h2 class="bg-primary"><b>Vistula Q, @ViewBag.ServiceTypeName Waiting List</b>, @today</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Department
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Surname
+        </th>
+        <th>
+            Email Address
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketNumber)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceType.Department.DeptCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketNumber)
+            </td>
+        </tr>
+    }
+
+</table>

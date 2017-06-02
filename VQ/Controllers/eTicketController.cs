@@ -21,12 +21,13 @@ namespace VQ.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Warning", new { id = "1900" });
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Ticket ticket = db.Tickets.Find(id);
             if (ticket == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Warning", new { id = "2900" });
             }
 
             //System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "redirectJS", "setTimeout(function() { window.location.replace('homepage.aspx') }, 5000);", true);
@@ -39,20 +40,18 @@ namespace VQ.Controllers
         {
             if (id == null)
             {
-
+                return RedirectToAction("Index", "Warning", new { id = "3900" });
             }
             ServiceType st = db.ServiceTypes.Find(id);
             if (st == null)
             {
-
+                return RedirectToAction("Index", "Warning", new { id = "4900" });
             }
 
             ViewBag.ServiceTypeId = st.Id.ToString();
             ViewBag.ServiceTypeName = st.Name;
             ViewBag.DepartmentId = st.DepartmentId;
             ViewBag.DepartmentName = st.Department.Name;
-
-
 
             return View();
         }

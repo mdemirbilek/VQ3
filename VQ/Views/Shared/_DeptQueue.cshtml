@@ -4,6 +4,8 @@
     string bgColor = "aquamarine";
     string cssClass = "alert-info";
     int ticketCount = 1;
+
+    var controller = ViewContext.Controller as VQ.Controllers.QueuesController;
 }
 
 
@@ -61,7 +63,8 @@
                 {
                     if (item.PlaySound == true)
                     {
-                        <embed src="~/Content/bell.wav" autostart="false" width="0" height="0" id="bellwav" enablejavascript="true">
+                        <embed src="~/Content/bell.wav" autostart="true" width="0" height="0" id="bellwav" enablejavascript="true">
+                        //controller.SetBell(item.Id);
                     }
 
                     <i class="fa fa-hand-o-right" style="font-size:60px; font-weight:bold; color:red"></i>
@@ -72,7 +75,7 @@
                 }
             </td>
             <td>
-                <div id="mydiv">@Html.DisplayFor(modelItem => item.DeptCode)-@Html.DisplayFor(modelItem => item.TicketNumber)-@Html.DisplayFor(modelItem => item.CallCount)</div>
+                <div id="mydiv">@Html.DisplayFor(modelItem => item.DeptCode)-@Html.DisplayFor(modelItem => item.TicketNumber)</div>
             </td>
             <td>
                 <i class="fa fa-angle-double-right" style="font-size:60px"></i>

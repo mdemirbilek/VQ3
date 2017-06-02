@@ -232,6 +232,7 @@
     <Compile Include="Controllers\ServiceTypesController.cs" />
     <Compile Include="Controllers\SysConfigsController.cs" />
     <Compile Include="Controllers\TicketManController.cs" />
+    <Compile Include="Controllers\WaitingListController.cs" />
     <Compile Include="Controllers\WarningController.cs" />
     <Compile Include="Counter.cs">
       <DependentUpon>VQDataModel.tt</DependentUpon>
@@ -458,6 +459,8 @@
     <Content Include="Views\Agents\Details.cshtml" />
     <Content Include="Views\Agents\Edit.cshtml" />
     <Content Include="Views\Agents\Index.cshtml" />
+    <Content Include="Views\WaitingList\Index.cshtml" />
+    <Content Include="Views\WaitingList\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,6 +18,16 @@ namespace VQ.Controllers
             return View();
         }
 
+        public void SetBell(int tId)
+        {
+            TicketsInService tiss = db.TicketsInServices.Find(tId);
+            if (tiss != null)
+            {
+                tiss.PlaySound = false;
+                db.SaveChangesAsync();
+            }
+        }
+
         public ActionResult DeptQueues(string id)
         {
             string deptId = "1";
