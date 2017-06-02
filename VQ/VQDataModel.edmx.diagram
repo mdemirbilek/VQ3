@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8bbfd01d027c4e3a84be60667b7862b4" Name="Diagram1">
+        <EntityTypeShape EntityType="VQModel.Agent" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="VQModel.Customer" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="VQModel.Department" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="VQModel.Desk" Width="1.5" PointX="5.25" PointY="11.875" />
+        <EntityTypeShape EntityType="VQModel.ServiceType" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="VQModel.Ticket" Width="1.5" PointX="5.25" PointY="4.75" />
+        <EntityTypeShape EntityType="VQModel.TicketsInService" Width="1.5" PointX="7.5" PointY="4.25" />
+        <AssociationConnector Association="VQModel.FK_TicketsInService_Agents" />
+        <AssociationConnector Association="VQModel.FK_Tickets_Customers" />
+        <AssociationConnector Association="VQModel.FK_ServiceTypes_Departments" />
+        <AssociationConnector Association="VQModel.FK_TicketsInService_Desks" />
+        <AssociationConnector Association="VQModel.FK_Tickets_ServiceTypes" />
+        <AssociationConnector Association="VQModel.FK_TicketsInService_Tickets" />
+        <EntityTypeShape EntityType="VQModel.Counter" Width="1.5" PointX="5.25" PointY="15.25" />
+        <AssociationConnector Association="VQModel.FK_Agents_ServiceTypes" />
+        <EntityTypeShape EntityType="VQModel.ErrorMessage" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="VQModel.FK_Counters_Departments" />
+        <EntityTypeShape EntityType="VQModel.vwTIP2" Width="1.5" PointX="0.75" PointY="8.75" />
+        <AssociationConnector Association="VQModel.FK_Agents_Departments" />
+        <AssociationConnector Association="VQModel.FK_Agents_Desks" />
+        <EntityTypeShape EntityType="VQModel.AgentRole" Width="1.5" PointX="10.5" PointY="1.375" />
+        <EntityTypeShape EntityType="VQModel.Role" Width="1.5" PointX="8.25" PointY="10.75" />
+        <AssociationConnector Association="VQModel.FK_AgentRoles_Agents" />
+        <AssociationConnector Association="VQModel.FK_AgentRoles_Roles" />
+        <AssociationConnector Association="VQModel.FK_Desks_Departments" />
+        <EntityTypeShape EntityType="VQModel.vwTNrCalled" Width="1.5" PointX="10.375" PointY="4.75" />
+        <EntityTypeShape EntityType="VQModel.vwTNrNotCalled" Width="1.5" PointX="10.375" PointY="7.75" />
+        <EntityTypeShape EntityType="VQModel.SysConfig" Width="1.5" PointX="10.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<VQ.ErrorMessage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MessageEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MessagePL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BackController)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BackAction)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessageEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessagePL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BackController)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BackAction)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

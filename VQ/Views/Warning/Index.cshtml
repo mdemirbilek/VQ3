@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Warning!";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>@ViewBag.ErrMessage</h2>
+
+<div class="alert-warning">
+    @ViewBag.ErrMsgEN
+    <br />
+    @ViewBag.ErrMsgPL
+</div>
+
+@{ 
+    string bc = ViewBag.BackController;
+    string ba = ViewBag.BackAction;
+}
+<p>
+    <a class="btn btn-info" style="font-size:36px;" href="~/@bc"/@ba>Back</a>
+</p>
+
+

@@ -1,0 +1,58 @@
+﻿@model VQ.ErrorMessage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ErrorMessage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MsgId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MsgId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessagePL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessagePL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BackController)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackController)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BackAction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackAction)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

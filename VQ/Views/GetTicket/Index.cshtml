@@ -1,0 +1,30 @@
+﻿@model IEnumerable<VQ.ServiceType>
+
+@{
+    ViewBag.Title = "Get Service Ticket";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    DateTime now = DateTime.Now;
+    string today = now.Year.ToString() + "-" + now.Month.ToString() + "-" + now.Day.ToString();
+}
+
+
+<h2 class="bg-primary"><b>Vistula University, Get Ticket</b>, @today</h2>
+<h4>Please select service type..</h4>
+<hr />
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="alert-info">
+                <h2>@item.Department.Name - @item.Name</h2>
+                <p class="lead">@item.Description</p>
+            </td>
+
+            <td style="vertical-align:middle; text-align:center" class="alert-success">
+                <a href="../eTicket/Create/@item.Id" class="btn btn-primary btn-lg">Get e-Ticket &raquo;</a>
+            </td>
+        </tr>
+    }
+
+</table>

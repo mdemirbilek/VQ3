@@ -1,0 +1,52 @@
+﻿@model IEnumerable<VQ.Controllers.CounterStatus>
+
+@{
+    ViewBag.Title = "Current Ticket Counters";
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+    DateTime now = DateTime.Now;
+    string today = now.Year.ToString() + "-" + now.Month.ToString() + "-" + now.Day.ToString();
+    string cssClass = "alert-info";
+}
+
+<h2 class="bg-primary"><b>Vistula University, Ticket Counters</b>, @today</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr style="font-size:24px">
+                <td>
+                    Department&nbsp;/&nbsp;Service
+                </td>
+                <td align="center">
+                    Ticket&nbsp;in&nbsp;Service
+                </td>
+                <td align="center">
+                    Next&nbsp;Available&nbsp;Ticket&nbsp;Nr
+                </td>
+            </tr>
+            @foreach (var item in Model)
+            {
+
+                <tr class="@cssClass" style="font-size:60px;">
+                    <td>
+                        @item.DeptCode&nbsp;-&nbsp;@item.ServiceTypeName
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.DeptCode)-@Html.DisplayFor(modelItem => item.TiS)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.DeptCode)-@Html.DisplayFor(modelItem => item.NextTicket)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@*<div class="col-md-12" style="padding-left:0px">
+    <p><a class="btn btn-primary btn-lg" href="~/GetTicket">Get e-Ticket &raquo;</a></p>
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

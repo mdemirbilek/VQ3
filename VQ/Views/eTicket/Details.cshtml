@@ -1,0 +1,57 @@
+﻿@model VQ.Ticket
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+
+<h2>Vistula Q- Ticket Details</h2>
+<hr />
+
+<div>
+
+    <div class="alert-danger">
+        <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+        <div class="col-md-2" style="font-size:larger; vertical-align:text-bottom;">Ticket Number</div>
+        <div class="col-md-7" style="font-size:96px; font-weight:bold">
+            @Html.DisplayFor(model => model.ServiceType.Department.DeptCode)-@Html.DisplayFor(model => model.TicketNumber)
+        </div>
+    </div>
+
+    <div class="alert-info">
+        <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+        <div class="col-md-2" style="font-size:larger;">Service Type</div>
+        <div class="col-md-7" style="font-size:x-large; font-weight:bold">
+            @Html.DisplayFor(model => model.ServiceType.Name)
+        </div>
+    </div>
+
+    <div class="alert-info">
+        <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+        <div class="col-md-2" style="font-size:larger;">Ticket Pin</div>
+        <div class="col-md-7" style="font-size:x-large; font-weight:bold">
+            @Html.DisplayFor(model => model.TicketPin)
+        </div>
+    </div>
+
+    <div class="alert-info">
+        <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+        <div class="col-md-2" style="font-size:larger;">Ticket Time</div>
+        <div class="col-md-7" style="font-size:x-large; font-weight:bold">
+            @Html.DisplayFor(model => model.TicketTime)
+        </div>
+    </div>
+
+</div>
+
+<br />
+
+<div class="col-md-12" style="padding-left:0px">
+    <a class="btn btn-info" style="font-size:36px;" href="~/GetTicket">Back to List</a>
+</div>
+
+
+<script type="text/javascript">
+    setTimeout('location.href="../../GetTicket"',10000);
+</script>
+

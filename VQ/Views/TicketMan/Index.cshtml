@@ -1,0 +1,174 @@
+﻿@model VQ.TicketsInService
+
+@{
+    ViewBag.Title = "Ticket Management";
+}
+
+<h2 class="bg-primary"><b>Vistula Q, Ticket In-Service</b>, @DateTime.Today.ToShortDateString()</h2>
+
+<hr />
+
+<div class="row">
+
+    <div style="visibility:@Session["div1"].ToString()">
+        <div class="alert-info">
+            <div class="col-md-4" style="text-align:right; font-size:larger"></div>
+            <div class="col-md-8" style="font-size:x-large; font-weight:bold">
+                No current ticket!
+            </div>
+        </div>
+    </div>
+
+    <div style="visibility:@Session["div2"].ToString()">
+        <div class="alert-info">
+            <div class="col-md-2" style="font-size:larger">
+                <button class="btn btn-info alert-warning" type="button" id="id1" onclick="location.href='@Url.Action("Index", "TicketMan", new { id = "mc" })'">Missing Customer</button>
+            </div>
+            <div class="col-md-2" style="font-size:larger">
+                <button class="btn btn-info alert-success" type="button" id="id2" onclick="location.href='@Url.Action("Index", "TicketMan", new { id = "sc" })'">Successfull OK</button>
+            </div>
+            <div class="col-md-2" style="font-size:larger">
+                <button class="btn btn-info alert-danger" type="button" id="id3" onclick="location.href='@Url.Action("Index", "TicketMan", new { id = "uc" })'">UnSuccessfull</button>
+            </div>
+            <div class="col-md-2" style="font-size:larger">
+                <button class="btn btn-warning" type="button" id="id7" onclick="location.href='@Url.Action("Index", "TicketMan", new { id = "rc" })'">Re-Call</button>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                <div class="col-md-3" style="font-size:larger">
+                    @Html.DropDownList("ServiceList")
+                </div>
+                <div class="col-md-1" style="font-size:larger">
+                    <input type="hidden" name="id" value="fw" />
+                    <button class="btn btn-info alert-danger" type="submit" value="id" name="id" id="id5">FWD</button>
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <div class="col-md-12" style="font-size:x-large; font-weight:bold"><br /></div>
+
+    <div style="visibility:@Session["div3"].ToString()">
+       
+
+        <div class="alert-success">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Agent</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.Agent.Name)
+            </div>
+        </div>
+
+        <div class="alert-info">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Desk</div>
+            <div class="col-md-7" style="font-size:xx-large; font-weight:bold">
+                @Html.DisplayFor(model => model.DeskName)
+            </div>
+        </div>
+
+        <div class="alert-info">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Department</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.DepartmentName)
+            </div>
+        </div>
+
+        <div class="col-md-12" style="font-size:x-large; font-weight:bold"><hr /></div>
+
+        <div class="alert-danger">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Ticket Number</div>
+            <div class="col-md-7" style="font-size:xx-large; font-weight:bold">
+                @Html.DisplayFor(model => model.DeptCode)-@Html.DisplayFor(model => model.TicketNumber)
+            </div>
+        </div>
+
+        <div class="alert-danger">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Customer</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.Ticket.Customer.Name)
+            </div>
+        </div>
+
+        <div class="alert-info">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Ticket Pin</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.Ticket.TicketPin)
+            </div>
+        </div>
+
+        <div class="alert-info">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Ticket Time</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.TicketTime)
+            </div>
+        </div>
+
+        <div class="alert-info">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Service Type</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.ServiceTypeName)
+            </div>
+        </div>
+
+        <div class="alert-info">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">First Call Time</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.FirstCallTime)
+            </div>
+        </div>
+
+        <div class="alert-info">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Last Call Time</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.LastCallDate)
+            </div>
+        </div>
+
+        <div class="alert-info">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Call Count</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.CallCount)
+            </div>
+        </div>
+
+        <div class="alert-danger">
+            <div class="col-md-3" style="font-size:larger;">&nbsp;</div>
+            <div class="col-md-2" style="font-size:larger;">Status</div>
+            <div class="col-md-7" style="font-size:larger; font-weight:bold">
+                @Html.DisplayFor(model => model.Status)
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12" style="font-size:x-large; font-weight:bold"><br /></div>
+
+    <div style="visibility:@Session["div4"].ToString()">
+        <div class="alert-info">
+            <div class="col-md-3" style="font-size:larger">
+                <button class="btn btn-info alert-danger" type="button" id="id7" onclick="location.href='@Url.Action("Index", "TicketMan", new { id = "cd" })'">Close Desk</button>
+            </div>
+            <div class="col-md-3" style="font-size:larger"></div>
+            <div class="col-md-3" style="font-size:larger"></div>
+            <div class="col-md-3" style="font-size:larger; visibility:@Session["div5"].ToString()">
+                <button class="btn btn-info" type="button" id="id8" onclick="location.href='@Url.Action("Index", "TicketMan", new { id = "cn" })'">Call Next Ticket</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

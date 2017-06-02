@@ -1,0 +1,22 @@
+﻿@model IEnumerable<VQ.Models.Queues>
+
+@{
+    string bgColor = "aquamarine";
+    string cssClass = "alert-info";
+}
+
+<table class="table">
+    <tr style="font-size:48px">
+        <td align="center">
+            Current&nbsp;Ticket&nbsp;Nr
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr class="@cssClass" style="font-size:384px;">
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.DeptCode)-@Html.DisplayFor(modelItem => item.TicketNumber)
+            </td>
+        </tr>
+    }
+</table>

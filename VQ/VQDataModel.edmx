@@ -1,0 +1,1108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VQModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgentRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Agents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="CurrentDeskId" Type="int" Nullable="false" />
+          <Property Name="PrimaryServiceTypeId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Counters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="ServiceDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="CurrentCounter" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdentityNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastTicketId" Type="int" Nullable="false" />
+          <Property Name="MTC" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeptCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Desks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ErrorMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MsgId" Type="int" Nullable="false" />
+          <Property Name="MessageEN" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="MessagePL" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="BackController" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BackAction" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysConfigs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SysCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IntValue" Type="int" Nullable="false" />
+          <Property Name="StrValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceTypeId" Type="int" Nullable="false" />
+          <Property Name="TicketTime" Type="datetime" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="TicketNumber" Type="int" Nullable="false" />
+          <Property Name="TicketPin" Type="int" Nullable="false" />
+          <Property Name="IsCalled" Type="bit" Nullable="false" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="ForwardedBy" Type="int" Nullable="false" />
+          <Property Name="CallTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TicketsInService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeptCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ServiceTypeId" Type="int" Nullable="false" />
+          <Property Name="ServiceTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeskId" Type="int" Nullable="false" />
+          <Property Name="DeskName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AgentId" Type="int" Nullable="false" />
+          <Property Name="TicketId" Type="int" Nullable="false" />
+          <Property Name="TicketTime" Type="datetime" Nullable="false" />
+          <Property Name="TicketNumber" Type="int" Nullable="false" />
+          <Property Name="FirstCallTime" Type="datetime" Nullable="false" />
+          <Property Name="LastCallDate" Type="datetime" Nullable="false" />
+          <Property Name="CallCount" Type="int" Nullable="false" />
+          <Property Name="IsCurrent" Type="bit" Nullable="false" />
+          <Property Name="IsServed" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceEndTime" Type="datetime" Nullable="false" />
+          <Property Name="ForwardedBy" Type="int" Nullable="false" />
+          <Property Name="ForwardedTo" Type="int" Nullable="false" />
+          <Property Name="PlaySound" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VQ.dbo.vwTIP2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwTIP2">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+            <PropertyRef Name="DepartmentName" />
+            <PropertyRef Name="DeptCode" />
+            <PropertyRef Name="DeskId" />
+            <PropertyRef Name="DeskName" />
+            <PropertyRef Name="IsCurrent" />
+          </Key>
+          <Property Name="Id" Type="bigint" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeptCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DeskId" Type="int" Nullable="false" />
+          <Property Name="DeskName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsCurrent" Type="bit" Nullable="false" />
+          <Property Name="TicketDay" Type="datetime" />
+          <Property Name="MaxTN" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VQ.dbo.vwTNrCalled' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwTNrCalled">
+          <Key>
+            
+            
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="MaxTN" Type="int" />
+          <Property Name="ServiceTypeId" Type="int" Nullable="false" />
+          <Property Name="TicketDay" Type="datetime" />
+          <Property Name="IsCalled" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VQ.dbo.vwTNrNotCalled' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwTNrNotCalled">
+          <Key>
+            
+            
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="MaxTN" Type="int" />
+          <Property Name="ServiceTypeId" Type="int" Nullable="false" />
+          <Property Name="TicketDay" Type="datetime" />
+          <Property Name="IsCalled" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AgentRoles_Agents">
+          <End Role="Agents" Type="Self.Agents" Multiplicity="1" />
+          <End Role="AgentRoles" Type="Self.AgentRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgentRoles">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgentRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="AgentRoles" Type="Self.AgentRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgentRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agents_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="Agents" Type="Self.Agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agents">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agents_Desks">
+          <End Role="Desks" Type="Self.Desks" Multiplicity="1" />
+          <End Role="Agents" Type="Self.Agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Desks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agents">
+              <PropertyRef Name="CurrentDeskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agents_ServiceTypes">
+          <End Role="ServiceTypes" Type="Self.ServiceTypes" Multiplicity="1" />
+          <End Role="Agents" Type="Self.Agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agents">
+              <PropertyRef Name="PrimaryServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Counters_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="Counters" Type="Self.Counters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Counters">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Desks_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="Desks" Type="Self.Desks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Desks">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceTypes_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="ServiceTypes" Type="Self.ServiceTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceTypes">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_ServiceTypes">
+          <End Role="ServiceTypes" Type="Self.ServiceTypes" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketsInService_Agents">
+          <End Role="Agents" Type="Self.Agents" Multiplicity="1" />
+          <End Role="TicketsInService" Type="Self.TicketsInService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TicketsInService">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketsInService_Desks">
+          <End Role="Desks" Type="Self.Desks" Multiplicity="1" />
+          <End Role="TicketsInService" Type="Self.TicketsInService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Desks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TicketsInService">
+              <PropertyRef Name="DeskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketsInService_Tickets">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+          <End Role="TicketsInService" Type="Self.TicketsInService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TicketsInService">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VQModelStoreContainer">
+          <EntitySet Name="AgentRoles" EntityType="Self.AgentRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agents" EntityType="Self.Agents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Counters" EntityType="Self.Counters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Desks" EntityType="Self.Desks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorMessages" EntityType="Self.ErrorMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceTypes" EntityType="Self.ServiceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysConfigs" EntityType="Self.SysConfigs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketsInService" EntityType="Self.TicketsInService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwTIP2" EntityType="Self.vwTIP2" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwTIP2].[Id] AS [Id], 
+    [vwTIP2].[DepartmentId] AS [DepartmentId], 
+    [vwTIP2].[DepartmentName] AS [DepartmentName], 
+    [vwTIP2].[DeptCode] AS [DeptCode], 
+    [vwTIP2].[DeskId] AS [DeskId], 
+    [vwTIP2].[DeskName] AS [DeskName], 
+    [vwTIP2].[IsCurrent] AS [IsCurrent], 
+    [vwTIP2].[TicketDay] AS [TicketDay], 
+    [vwTIP2].[MaxTN] AS [MaxTN]
+    FROM [dbo].[vwTIP2] AS [vwTIP2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwTNrCalled" EntityType="Self.vwTNrCalled" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwTNrCalled].[Id] AS [Id], 
+    [vwTNrCalled].[MaxTN] AS [MaxTN], 
+    [vwTNrCalled].[ServiceTypeId] AS [ServiceTypeId], 
+    [vwTNrCalled].[TicketDay] AS [TicketDay], 
+    [vwTNrCalled].[IsCalled] AS [IsCalled]
+    FROM [dbo].[vwTNrCalled] AS [vwTNrCalled]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwTNrNotCalled" EntityType="Self.vwTNrNotCalled" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwTNrNotCalled].[Id] AS [Id], 
+    [vwTNrNotCalled].[MaxTN] AS [MaxTN], 
+    [vwTNrNotCalled].[ServiceTypeId] AS [ServiceTypeId], 
+    [vwTNrNotCalled].[TicketDay] AS [TicketDay], 
+    [vwTNrNotCalled].[IsCalled] AS [IsCalled]
+    FROM [dbo].[vwTNrNotCalled] AS [vwTNrNotCalled]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AgentRoles_Agents" Association="Self.FK_AgentRoles_Agents">
+            <End Role="Agents" EntitySet="Agents" />
+            <End Role="AgentRoles" EntitySet="AgentRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgentRoles_Roles" Association="Self.FK_AgentRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="AgentRoles" EntitySet="AgentRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agents_Departments" Association="Self.FK_Agents_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Agents" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agents_Desks" Association="Self.FK_Agents_Desks">
+            <End Role="Desks" EntitySet="Desks" />
+            <End Role="Agents" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agents_ServiceTypes" Association="Self.FK_Agents_ServiceTypes">
+            <End Role="ServiceTypes" EntitySet="ServiceTypes" />
+            <End Role="Agents" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Counters_Departments" Association="Self.FK_Counters_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Counters" EntitySet="Counters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Desks_Departments" Association="Self.FK_Desks_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Desks" EntitySet="Desks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceTypes_Departments" Association="Self.FK_ServiceTypes_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="ServiceTypes" EntitySet="ServiceTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Customers" Association="Self.FK_Tickets_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_ServiceTypes" Association="Self.FK_Tickets_ServiceTypes">
+            <End Role="ServiceTypes" EntitySet="ServiceTypes" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketsInService_Agents" Association="Self.FK_TicketsInService_Agents">
+            <End Role="Agents" EntitySet="Agents" />
+            <End Role="TicketsInService" EntitySet="TicketsInService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketsInService_Desks" Association="Self.FK_TicketsInService_Desks">
+            <End Role="Desks" EntitySet="Desks" />
+            <End Role="TicketsInService" EntitySet="TicketsInService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketsInService_Tickets" Association="Self.FK_TicketsInService_Tickets">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="TicketsInService" EntitySet="TicketsInService" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VQModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VQEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agents" EntityType="VQModel.Agent" />
+          <EntitySet Name="Customers" EntityType="VQModel.Customer" />
+          <EntitySet Name="Departments" EntityType="VQModel.Department" />
+          <EntitySet Name="Desks" EntityType="VQModel.Desk" />
+          <EntitySet Name="ServiceTypes" EntityType="VQModel.ServiceType" />
+          <EntitySet Name="Tickets" EntityType="VQModel.Ticket" />
+          <EntitySet Name="TicketsInServices" EntityType="VQModel.TicketsInService" />
+          <AssociationSet Name="FK_TicketsInService_Agents" Association="VQModel.FK_TicketsInService_Agents">
+            <End Role="Agent" EntitySet="Agents" />
+            <End Role="TicketsInService" EntitySet="TicketsInServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Customers" Association="VQModel.FK_Tickets_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceTypes_Departments" Association="VQModel.FK_ServiceTypes_Departments">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketsInService_Desks" Association="VQModel.FK_TicketsInService_Desks">
+            <End Role="Desk" EntitySet="Desks" />
+            <End Role="TicketsInService" EntitySet="TicketsInServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_ServiceTypes" Association="VQModel.FK_Tickets_ServiceTypes">
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketsInService_Tickets" Association="VQModel.FK_TicketsInService_Tickets">
+            <End Role="Ticket" EntitySet="Tickets" />
+            <End Role="TicketsInService" EntitySet="TicketsInServices" />
+          </AssociationSet>
+          <EntitySet Name="Counters" EntityType="VQModel.Counter" />
+          <AssociationSet Name="FK_Agents_ServiceTypes" Association="VQModel.FK_Agents_ServiceTypes">
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+            <End Role="Agent" EntitySet="Agents" />
+          </AssociationSet>
+          <EntitySet Name="ErrorMessages" EntityType="VQModel.ErrorMessage" />
+          <AssociationSet Name="FK_Counters_Departments" Association="VQModel.FK_Counters_Departments">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Counter" EntitySet="Counters" />
+          </AssociationSet>
+          <EntitySet Name="vwTIP2" EntityType="VQModel.vwTIP2" />
+          <AssociationSet Name="FK_Agents_Departments" Association="VQModel.FK_Agents_Departments">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Agent" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agents_Desks" Association="VQModel.FK_Agents_Desks">
+            <End Role="Desk" EntitySet="Desks" />
+            <End Role="Agent" EntitySet="Agents" />
+          </AssociationSet>
+          <EntitySet Name="AgentRoles" EntityType="VQModel.AgentRole" />
+          <EntitySet Name="Roles" EntityType="VQModel.Role" />
+          <AssociationSet Name="FK_AgentRoles_Agents" Association="VQModel.FK_AgentRoles_Agents">
+            <End Role="Agent" EntitySet="Agents" />
+            <End Role="AgentRole" EntitySet="AgentRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgentRoles_Roles" Association="VQModel.FK_AgentRoles_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="AgentRole" EntitySet="AgentRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Desks_Departments" Association="VQModel.FK_Desks_Departments">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Desk" EntitySet="Desks" />
+          </AssociationSet>
+          <EntitySet Name="vwTNrCalleds" EntityType="VQModel.vwTNrCalled" />
+          <EntitySet Name="vwTNrNotCalleds" EntityType="VQModel.vwTNrNotCalled" />
+          <EntitySet Name="SysConfigs" EntityType="VQModel.SysConfig" />
+        </EntityContainer>
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="CurrentDeskId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TicketsInServices" Relationship="VQModel.FK_TicketsInService_Agents" FromRole="Agent" ToRole="TicketsInService" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryServiceTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ServiceType" Relationship="VQModel.FK_Agents_ServiceTypes" FromRole="Agent" ToRole="ServiceType" />
+          <NavigationProperty Name="Department" Relationship="VQModel.FK_Agents_Departments" FromRole="Agent" ToRole="Department" />
+          <NavigationProperty Name="Desk" Relationship="VQModel.FK_Agents_Desks" FromRole="Agent" ToRole="Desk" />
+          <NavigationProperty Name="AgentRoles" Relationship="VQModel.FK_AgentRoles_Agents" FromRole="Agent" ToRole="AgentRole" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdentityNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tickets" Relationship="VQModel.FK_Tickets_Customers" FromRole="Customer" ToRole="Ticket" />
+          <Property Name="MTC" Type="Int32" Nullable="false" />
+          <Property Name="LastTicketId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ServiceTypes" Relationship="VQModel.FK_ServiceTypes_Departments" FromRole="Department" ToRole="ServiceType" />
+          <NavigationProperty Name="Counters" Relationship="VQModel.FK_Counters_Departments" FromRole="Department" ToRole="Counter" />
+          <NavigationProperty Name="Agents" Relationship="VQModel.FK_Agents_Departments" FromRole="Department" ToRole="Agent" />
+          <NavigationProperty Name="Desks" Relationship="VQModel.FK_Desks_Departments" FromRole="Department" ToRole="Desk" />
+          <Property Name="DeptCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Desk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TicketsInServices" Relationship="VQModel.FK_TicketsInService_Desks" FromRole="Desk" ToRole="TicketsInService" />
+          <NavigationProperty Name="Agents" Relationship="VQModel.FK_Agents_Desks" FromRole="Desk" ToRole="Agent" />
+          <NavigationProperty Name="Department" Relationship="VQModel.FK_Desks_Departments" FromRole="Desk" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Department" Relationship="VQModel.FK_ServiceTypes_Departments" FromRole="ServiceType" ToRole="Department" />
+          <NavigationProperty Name="Tickets" Relationship="VQModel.FK_Tickets_ServiceTypes" FromRole="ServiceType" ToRole="Ticket" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Agents" Relationship="VQModel.FK_Agents_ServiceTypes" FromRole="ServiceType" ToRole="Agent" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TicketTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="TicketNumber" Type="Int32" Nullable="false" />
+          <Property Name="TicketPin" Type="Int32" Nullable="false" />
+          <Property Name="IsCalled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="VQModel.FK_Tickets_Customers" FromRole="Ticket" ToRole="Customer" />
+          <NavigationProperty Name="ServiceType" Relationship="VQModel.FK_Tickets_ServiceTypes" FromRole="Ticket" ToRole="ServiceType" />
+          <NavigationProperty Name="TicketsInServices" Relationship="VQModel.FK_TicketsInService_Tickets" FromRole="Ticket" ToRole="TicketsInService" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <Property Name="ForwardedBy" Type="Int32" Nullable="false" />
+          <Property Name="CallTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TicketsInService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeskId" Type="Int32" Nullable="false" />
+          <Property Name="AgentId" Type="Int32" Nullable="false" />
+          <Property Name="TicketId" Type="Int32" Nullable="false" />
+          <Property Name="TicketTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TicketNumber" Type="Int32" Nullable="false" />
+          <Property Name="FirstCallTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastCallDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CallCount" Type="Int32" Nullable="false" />
+          <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
+          <Property Name="IsServed" Type="Boolean" Nullable="false" />
+          <Property Name="ServiceEndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Agent" Relationship="VQModel.FK_TicketsInService_Agents" FromRole="TicketsInService" ToRole="Agent" />
+          <NavigationProperty Name="Desk" Relationship="VQModel.FK_TicketsInService_Desks" FromRole="TicketsInService" ToRole="Desk" />
+          <NavigationProperty Name="Ticket" Relationship="VQModel.FK_TicketsInService_Tickets" FromRole="TicketsInService" ToRole="Ticket" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeskName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ForwardedBy" Type="Int32" Nullable="false" />
+          <Property Name="ForwardedTo" Type="Int32" Nullable="false" />
+          <Property Name="DeptCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PlaySound" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TicketsInService_Agents">
+          <End Type="VQModel.Agent" Role="Agent" Multiplicity="1" />
+          <End Type="VQModel.TicketsInService" Role="TicketsInService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TicketsInService">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Customers">
+          <End Type="VQModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="VQModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceTypes_Departments">
+          <End Type="VQModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="VQModel.ServiceType" Role="ServiceType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceType">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketsInService_Desks">
+          <End Type="VQModel.Desk" Role="Desk" Multiplicity="1" />
+          <End Type="VQModel.TicketsInService" Role="TicketsInService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Desk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TicketsInService">
+              <PropertyRef Name="DeskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_ServiceTypes">
+          <End Type="VQModel.ServiceType" Role="ServiceType" Multiplicity="1" />
+          <End Type="VQModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketsInService_Tickets">
+          <End Type="VQModel.Ticket" Role="Ticket" Multiplicity="1" />
+          <End Type="VQModel.TicketsInService" Role="TicketsInService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TicketsInService">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Counter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentCounter" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="VQModel.FK_Counters_Departments" FromRole="Counter" ToRole="Department" />
+        </EntityType>
+        <Association Name="FK_Agents_ServiceTypes">
+          <End Type="VQModel.ServiceType" Role="ServiceType" Multiplicity="1" />
+          <End Type="VQModel.Agent" Role="Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="PrimaryServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ErrorMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MsgId" Type="Int32" Nullable="false" />
+          <Property Name="MessageEN" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MessagePL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BackController" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BackAction" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Counters_Departments">
+          <End Type="VQModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="VQModel.Counter" Role="Counter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Counter">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwTIP2">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+            <PropertyRef Name="DepartmentName" />
+            <PropertyRef Name="DeskId" />
+            <PropertyRef Name="DeskName" />
+            <PropertyRef Name="IsCurrent" />
+            <PropertyRef Name="DeptCode" />
+          </Key>
+          <Property Name="Id" Type="Int64" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeskId" Type="Int32" Nullable="false" />
+          <Property Name="DeskName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
+          <Property Name="TicketDay" Type="DateTime" Precision="3" />
+          <Property Name="MaxTN" Type="Int32" />
+          <Property Name="DeptCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Agents_Departments">
+          <End Type="VQModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="VQModel.Agent" Role="Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agents_Desks">
+          <End Type="VQModel.Desk" Role="Desk" Multiplicity="1" />
+          <End Type="VQModel.Agent" Role="Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Desk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="CurrentDeskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AgentRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Agent" Relationship="VQModel.FK_AgentRoles_Agents" FromRole="AgentRole" ToRole="Agent" />
+          <NavigationProperty Name="Role" Relationship="VQModel.FK_AgentRoles_Roles" FromRole="AgentRole" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AgentRoles" Relationship="VQModel.FK_AgentRoles_Roles" FromRole="Role" ToRole="AgentRole" />
+        </EntityType>
+        <Association Name="FK_AgentRoles_Agents">
+          <End Type="VQModel.Agent" Role="Agent" Multiplicity="1" />
+          <End Type="VQModel.AgentRole" Role="AgentRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgentRole">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgentRoles_Roles">
+          <End Type="VQModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="VQModel.AgentRole" Role="AgentRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgentRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Desks_Departments">
+          <End Type="VQModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="VQModel.Desk" Role="Desk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Desk">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwTNrCalled">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="MaxTN" Type="Int32" />
+          <Property Name="ServiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TicketDay" Type="DateTime" Precision="3" />
+          <Property Name="IsCalled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwTNrNotCalled">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="MaxTN" Type="Int32" />
+          <Property Name="ServiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TicketDay" Type="DateTime" Precision="3" />
+          <Property Name="IsCalled" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SysCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IntValue" Type="Int32" Nullable="false" />
+          <Property Name="StrValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VQModelStoreContainer" CdmEntityContainer="VQEntities">
+          <EntitySetMapping Name="Agents">
+            <EntityTypeMapping TypeName="VQModel.Agent">
+              <MappingFragment StoreEntitySet="Agents">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PrimaryServiceTypeId" ColumnName="PrimaryServiceTypeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CurrentDeskId" ColumnName="CurrentDeskId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="VQModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="LastTicketId" ColumnName="LastTicketId" />
+                <ScalarProperty Name="MTC" ColumnName="MTC" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="VQModel.Department">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Desks">
+            <EntityTypeMapping TypeName="VQModel.Desk">
+              <MappingFragment StoreEntitySet="Desks">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTypes">
+            <EntityTypeMapping TypeName="VQModel.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceTypes">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="VQModel.Ticket">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="CallTime" ColumnName="CallTime" />
+                <ScalarProperty Name="ForwardedBy" ColumnName="ForwardedBy" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsCalled" ColumnName="IsCalled" />
+                <ScalarProperty Name="TicketPin" ColumnName="TicketPin" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="TicketTime" ColumnName="TicketTime" />
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketsInServices">
+            <EntityTypeMapping TypeName="VQModel.TicketsInService">
+              <MappingFragment StoreEntitySet="TicketsInService">
+                <ScalarProperty Name="PlaySound" ColumnName="PlaySound" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="ForwardedTo" ColumnName="ForwardedTo" />
+                <ScalarProperty Name="ForwardedBy" ColumnName="ForwardedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DeskName" ColumnName="DeskName" />
+                <ScalarProperty Name="ServiceTypeName" ColumnName="ServiceTypeName" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="ServiceEndTime" ColumnName="ServiceEndTime" />
+                <ScalarProperty Name="IsServed" ColumnName="IsServed" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+                <ScalarProperty Name="CallCount" ColumnName="CallCount" />
+                <ScalarProperty Name="LastCallDate" ColumnName="LastCallDate" />
+                <ScalarProperty Name="FirstCallTime" ColumnName="FirstCallTime" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="TicketTime" ColumnName="TicketTime" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="DeskId" ColumnName="DeskId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counters">
+            <EntityTypeMapping TypeName="VQModel.Counter">
+              <MappingFragment StoreEntitySet="Counters">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="CurrentCounter" ColumnName="CurrentCounter" />
+                <ScalarProperty Name="ServiceDate" ColumnName="ServiceDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorMessages">
+            <EntityTypeMapping TypeName="VQModel.ErrorMessage">
+              <MappingFragment StoreEntitySet="ErrorMessages">
+                <ScalarProperty Name="BackAction" ColumnName="BackAction" />
+                <ScalarProperty Name="BackController" ColumnName="BackController" />
+                <ScalarProperty Name="MessagePL" ColumnName="MessagePL" />
+                <ScalarProperty Name="MessageEN" ColumnName="MessageEN" />
+                <ScalarProperty Name="MsgId" ColumnName="MsgId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwTIP2">
+            <EntityTypeMapping TypeName="VQModel.vwTIP2">
+              <MappingFragment StoreEntitySet="vwTIP2">
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="MaxTN" ColumnName="MaxTN" />
+                <ScalarProperty Name="TicketDay" ColumnName="TicketDay" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+                <ScalarProperty Name="DeskName" ColumnName="DeskName" />
+                <ScalarProperty Name="DeskId" ColumnName="DeskId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentRoles">
+            <EntityTypeMapping TypeName="VQModel.AgentRole">
+              <MappingFragment StoreEntitySet="AgentRoles">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="VQModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwTNrCalleds">
+            <EntityTypeMapping TypeName="VQModel.vwTNrCalled">
+              <MappingFragment StoreEntitySet="vwTNrCalled">
+                <ScalarProperty Name="IsCalled" ColumnName="IsCalled" />
+                <ScalarProperty Name="TicketDay" ColumnName="TicketDay" />
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="MaxTN" ColumnName="MaxTN" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwTNrNotCalleds">
+            <EntityTypeMapping TypeName="VQModel.vwTNrNotCalled">
+              <MappingFragment StoreEntitySet="vwTNrNotCalled">
+                <ScalarProperty Name="IsCalled" ColumnName="IsCalled" />
+                <ScalarProperty Name="TicketDay" ColumnName="TicketDay" />
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="MaxTN" ColumnName="MaxTN" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysConfigs">
+            <EntityTypeMapping TypeName="VQModel.SysConfig">
+              <MappingFragment StoreEntitySet="SysConfigs">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StrValue" ColumnName="StrValue" />
+                <ScalarProperty Name="IntValue" ColumnName="IntValue" />
+                <ScalarProperty Name="SysCode" ColumnName="SysCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
